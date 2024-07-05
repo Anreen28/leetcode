@@ -1,27 +1,18 @@
 class Solution {
     public int[] rearrangeArray(int[] nums) {
-        int[] ans = new int[nums.length];
-        ArrayList<Integer> pos = new ArrayList<>();
-        ArrayList<Integer> neg = new ArrayList<>();
+        var i = 0;
+        var j = 1;
 
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]>=0){
-                pos.add(nums[i]);
+        final var ans = new int[nums.length];
 
+        for (final var num : nums) {
+            if (num > 0) {
+                ans[i] = num;
+                i += 2;
+            } else {
+                ans[j] = num;
+                j += 2;
             }
-            else{
-                neg.add(nums[i]);
-            }
-        }
-        int j=0;
-        for(int i=0;i<nums.length;i=i+2){
-            ans[i]=pos.get(j);
-            j++;
-        }
-        int k=0;
-        for(int i=1;i<nums.length;i=i+2){
-            ans[i]=neg.get(k);
-            k++;
         }
 
         return ans;
